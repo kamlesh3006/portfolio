@@ -1,7 +1,17 @@
-.App {
-  text-align: center;
-}
+/* App.css */
 
+.App {
+  /* Use Flexbox to center children */
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;     /* Vertically center */
+
+  /* Make the container take up the full screen height */
+  min-height: 100vh;
+
+  /* Optional: a background color for the page */
+  background-color: #1b1b1b; 
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
