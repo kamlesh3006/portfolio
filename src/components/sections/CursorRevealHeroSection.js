@@ -39,34 +39,34 @@ function CursorRevealHeroSection({ onExplorePressed }) {
             onMouseLeave={() => setIsHovering(false)}
         >
             <div
-                className="absolute inset-0 bg-no-repeat bg-bottom"
-                style={{
-                    backgroundImage: "url('/assets/back.png')",
-                    backgroundSize: 'auto 75%',
-                }}
-            />
-            <motion.div
-                className="absolute inset-0 bg-no-repeat bg-bottom"
-                style={{
-                    backgroundImage: "url('/assets/front.png')",
-                    backgroundSize: 'auto 75%',
-                    maskImage: `radial-gradient(circle var(--mask-size) at ${mousePosition.x}px ${mousePosition.y}px, black 100%, transparent 100%)`,
-                    WebkitMaskImage: `radial-gradient(circle var(--mask-size) at ${mousePosition.x}px ${mousePosition.y}px, black 100%, transparent 100%)`,
-                    maskRepeat: 'no-repeat',
-                    WebkitMaskRepeat: 'no-repeat',
-                }}
-                initial={{ '--mask-size': '0px' }}
-                animate={{
-                    '--mask-size': isHovering
-                        ? [`${maskSize * 0.9}px`, `${maskSize * 1.1}px`, `${maskSize * 0.9}px`]
-                        : '0px'
-                }}
-                transition={{
-                    '--mask-size': isHovering
-                        ? { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                        : { type: 'spring', stiffness: 100, damping: 20 }
-                }}
-            />
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ 
+          backgroundImage: "url('/assets/final-fg.png')",
+        }}
+      />
+      
+      {/* Foreground Image with Mask (final-bg.png) */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ 
+          backgroundImage: "url('/assets/final-bg.png')",
+          maskImage: `radial-gradient(circle var(--mask-size) at ${mousePosition.x}px ${mousePosition.y}px, black 100%, transparent 100%)`,
+          WebkitMaskImage: `radial-gradient(circle var(--mask-size) at ${mousePosition.x}px ${mousePosition.y}px, black 100%, transparent 100%)`,
+          maskRepeat: 'no-repeat',
+          WebkitMaskRepeat: 'no-repeat',
+        }}
+        initial={{'--mask-size': '0px'}}
+        animate={{
+            '--mask-size': isHovering 
+              ? [`${maskSize * 0.9}px`, `${maskSize * 1.1}px`, `${maskSize * 0.9}px`] 
+              : '0px'
+        }}
+        transition={{
+            '--mask-size': isHovering 
+              ? { duration: 3, repeat: Infinity, ease: "easeInOut" } 
+              : { type: 'spring', stiffness: 100, damping: 20 }
+        }}
+      />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
                 <ScrollReveal>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-wider uppercase" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>

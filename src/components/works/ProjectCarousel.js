@@ -1,14 +1,20 @@
+
 import React from 'react';
-import Tilt from 'react-parallax-tilt';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import TiltableImage from './TiltableImage'; // Import the new component
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 function ProjectCarousel({ imagePaths, isMobileProjectType }) {
+  if (!imagePaths || imagePaths.length === 0) {
+    return null; // or a placeholder
+  }
+
   return (
-    <div className={`relative ${isMobileProjectType ? 'max-w-sm mx-auto' : ''}`}>
+    // --- CHANGE: Added padding (p-8) to the container to give the tilting image space ---
+    <div className={`relative p-8 ${isMobileProjectType ? 'max-w-sm mx-auto' : ''}`}>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
@@ -21,13 +27,11 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
       >
         {imagePaths.map((path, index) => (
           <SwiperSlide key={index}>
-            <Tilt glareEnable={true} glareMaxOpacity={0.1} glarePosition="all" scale={1.02}>
-              <img 
-                src={path} 
-                alt={`Project screenshot ${index + 1}`} 
-                className={`rounded-lg shadow-2xl ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} object-contain`}
-              />
-            </Tilt>
+            <TiltableImage 
+              src={path} 
+              alt={`Project screenshot ${index + 1}`} 
+              className={`rounded-2xl ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} object-contain w-full h-full`}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

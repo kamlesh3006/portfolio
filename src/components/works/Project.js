@@ -2,13 +2,7 @@ import React from 'react';
 import ProjectCarousel from './ProjectCarousel';
 import ScrollReveal from '../shared/ScrollReveal';
 
-function Project({ title, description, imagePath, type }) {
-  const imagePaths = [
-    imagePath,
-    imagePath.replace('-1.', '-2.'),
-    imagePath.replace('-1.', '-3.'),
-  ];
-
+function Project({ title, description, imagePaths, type }) {
   const isMobileProjectType = type === 'mobile';
 
   return (
@@ -17,8 +11,8 @@ function Project({ title, description, imagePath, type }) {
         <div className={`flex flex-col ${isMobileProjectType ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}>
           <div className="md:w-1/3">
             <ScrollReveal>
-              <h3 className="text-3xl md:text-4xl font-bold text-[#121212]">{title}</h3>
-              <p className="mt-4 text-base md:text-lg text-[#121212]/80 leading-relaxed">{description}</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#F5F5F5]">{title}</h3>
+              <p className="mt-4 text-base md:text-lg text-[#F5F5F5]/80 leading-relaxed">{description}</p>
             </ScrollReveal>
           </div>
           <div className="md:w-2/3">

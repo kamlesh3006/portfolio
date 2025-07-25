@@ -5,60 +5,65 @@ import ScrollReveal from '../shared/ScrollReveal';
 
 const projects = [
     {
-      title: 'FE Touch',
-      description: 'A sleek, tablet-based app made for bank tellers — associated with Collega Inti Pratama. FE Touch brings a fresh, modern interface to everyday banking tasks. something that feels fast, clean, and easy to use.',
-      imagePath: '/assets/images/works/project1-1.png',
+      title: 'Anviksa: ML-Based CAPTCHA',
+      description: 'A novel CAPTCHA system that passively detects bots by capturing and analyzing user behavior (mouse movements, keypresses) with machine learning models like Random Forest and XGBoost, eliminating traditional puzzles.',
+      imagePaths: [
+        '/assets/works/anviksa-1.png', 
+        '/assets/works/anviksa-2.png',
+        '/assets/works/anviksa-3.png',
+      ],
       type: 'desktop',
     },
     {
-      title: 'Panic Button',
-      description: 'A simple yet essential SOS app built for Damkar Banten. Designed for quick, real-time emergency reporting and tracking, it helps firefighters receive, manage, and respond to incidents faster. Clean UI meets critical functionality — because in emergencies, every second (and every tap) counts.',
-      imagePath: '/assets/images/works/project3-1.png',
-      type: 'mobile',
-    },
-    {
-      title: 'Core X',
-      description: 'A modern core banking solution built to replace the aging Olibs 724 system. Designed to handle the heart of banking operations with a more scalable, efficient, and user-friendly approach. Core X brings a fresh layer of clarity and performance to complex processes — all while keeping the reliability banks depend on.',
-      imagePath: '/assets/images/works/project2-1.png',
+      title: 'CodeArena - Coding Platform',
+      description: 'A web app for users to practice coding skills in OOP, DSA, and SQL. Features a secure session timeout, a code editor, and a compiler that validates solutions against predefined test cases.',
+      imagePaths: [
+        '/assets/works/codearena-1.png',
+        '/assets/works/codearena-2.png',
+        '/assets/works/codearena-3.png',
+      ],
       type: 'desktop',
     },
     {
-      title: 'Digital Lending',
-      description: 'A seamless loan application platform that brings the lending process fully online — from registration to approval. Built to simplify and speed up credit access for users, while giving banks a smarter way to manage risk and workflow. Digital Lending makes borrowing feel less like paperwork and more like progress.',
-      imagePath: '/assets/images/works/project4-1.png',
-      type: 'mobile',
-    },
-    {
-      title: 'Roast POS',
-      description: "An all-in-one restaurant operations app built to handle everything from POS transactions to inventory, stock tracking, staff presence, and real-time dashboards. Designed for smooth day-to-day operations — whether you're managing the floor, the kitchen, or the cash flow. Roast POS brings structure, clarity, and speed to the hustle of running a restaurant.",
-      imagePath: '/assets/images/works/project6-1.png',
-      type: 'desktop',
-    },
-    {
-      title: 'Lelang Online',
-      description: "A digital platform that brings the excitement of live auctions to your screen. Built to simplify the bidding process, manage listings, and ensure a fair, transparent experience for all users. Whether you're buying or selling, Lelang Online makes auctions feel accessible, fast, and just a little more fun.",
-      imagePath: '/assets/images/works/project5-1.png',
+      title: 'Panic Button (Sample)',
+      description: 'A simple yet essential SOS app built for Damkar Banten. Designed for quick, real-time emergency reporting and tracking, it helps firefighters receive, manage, and respond to incidents faster.',
+      imagePaths: [
+        '/assets/works/project3-1.png',
+        '/assets/works/project3-2.png',
+        '/assets/works/project3-3.png',
+      ],
       type: 'mobile',
     },
 ];
 
 function WorksSection({ scrollContainerRef }) {
   const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
+
+  const { scrollYProgress: horizontalScrollProgress } = useScroll({
     target: targetRef,
     container: scrollContainerRef,
     offset: ['start end', 'end start'],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
+  const { scrollYProgress: headerVisibilityProgress } = useScroll({
+      target: targetRef,
+      container: scrollContainerRef,
+      offset: ['start start', 'end start']
+  });
+
+  const x = useTransform(horizontalScrollProgress, [0, 1], ['0%', '-50%']);
+  const headerY = useTransform(headerVisibilityProgress, [0, 0.05], ['0%', '-100%']);
 
   return (
     <section ref={targetRef} className="relative w-full">
-      <div className="sticky top-0 h-auto py-16 md:py-32 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/paper.png')" }}>
+      <motion.div
+        style={{ y: headerY, backgroundImage: "url('/assets/images/paper.png')" }}
+        className="sticky top-0 h-auto py-16 md:py-32 bg-cover bg-center z-0"
+      >
         <div className="relative overflow-hidden">
           <motion.h2
             style={{ x }}
-            className="text-6xl md:text-9xl lg:text-[180px] font-black text-[#121212] whitespace-nowrap"
+            className="text-6xl md:text-9xl lg:text-[180px] font-black text-[#F5F5F5] whitespace-nowrap mix-blend-difference"
           >
             DESIGNED WITH LOGIC DESIGNED WITH LOGIC
           </motion.h2>
@@ -72,8 +77,9 @@ function WorksSection({ scrollContainerRef }) {
             </div>
           </ScrollReveal>
         </div>
-      </div>
-      <div className="relative z-10">
+      </motion.div>
+      
+      <div className="relative z-10 -mt-[35vh] md:-mt-[45vh]">
         {projects.map((project, index) => (
           <Project key={index} {...project} />
         ))}
@@ -81,4 +87,5 @@ function WorksSection({ scrollContainerRef }) {
     </section>
   );
 }
+
 export default WorksSection;
