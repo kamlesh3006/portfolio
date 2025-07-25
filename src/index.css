@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +8,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply tracking-widest;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px; /* Makes the scrollbar thinner */
+}
+
+/* This is the "track" or the background of the scrollbar */
+::-webkit-scrollbar-track {
+  background: transparent; /* Removes the white background */
+}
+
+/* This is the draggable scrolling handle */
+::-webkit-scrollbar-thumb {
+  background: #555; /* A dark grey color for the handle */
+  border-radius: 10px; /* Rounds the corners of the handle */
+}
+
+/* Change the handle's color on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
 }
