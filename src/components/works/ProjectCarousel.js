@@ -1,41 +1,50 @@
-
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import TiltableImage from './TiltableImage'; // Import the new component
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 function ProjectCarousel({ imagePaths, isMobileProjectType }) {
   if (!imagePaths || imagePaths.length === 0) {
-    return null; // or a placeholder
+    return null;
   }
 
   return (
-    // --- CHANGE: Added padding (p-8) to the container to give the tilting image space ---
-    <div className={`relative p-8 ${isMobileProjectType ? 'max-w-sm mx-auto' : ''}`}>
+    // --- CHANGE: Added the `group` class to this container ---
+    // This allows child elements to react to the hover state of this parent div.
+    <div className={`relative group ${isMobileProjectType ? 'max-w-sm mx-auto' : ''}`}>
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Navigation, Pagination]}
         spaceBetween={30}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
         className="works-carousel"
       >
         {imagePaths.map((path, index) => (
           <SwiperSlide key={index}>
-            <TiltableImage 
-              src={path} 
-              alt={`Project screenshot ${index + 1}`} 
-              className={`rounded-2xl ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} object-contain w-full h-full`}
-            />
+            <div className="p-16 overflow-hidden flex justify-center items-center">
+              <img 
+                src={path} 
+                alt={`Project screenshot ${index + 1}`} 
+                // --- CHANGE: Replaced `hover:` with `group-hover:` ---
+                // Now, hovering anywhere on the parent `group` will trigger these effects.
+                // Added a custom drop-shadow for the white glow effect.
+                className={`
+                  rounded-lg shadow-lg 
+                  ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} w-full
+                  transition-all duration-300 ease-in-out 
+                  group-hover:scale-110 
+                  group-hover:filter group-hover:drop-shadow-[0_5px_10px_rgba(255,255,255,0.3)]
+                `}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* Custom Swiper styles would be in your global CSS file */}
+      
       <style>{`
         .works-carousel .swiper-button-next,
         .works-carousel .swiper-button-prev {

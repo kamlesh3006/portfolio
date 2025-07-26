@@ -4,32 +4,43 @@ import toast from 'react-hot-toast';
 import { Send, Loader } from 'lucide-react';
 import ScrollReveal from '../shared/ScrollReveal';
 
-// NOTE: This form requires a backend endpoint to send emails.
-// The `onSubmit` function currently simulates an API call.
-// You would replace this with a fetch call to your serverless function or API.
-// Example services: EmailJS, Resend, SendGrid.
+// --- STEP 1: Import the EmailJS library ---
+import emailjs from '@emailjs/browser';
 
 function ContactSection() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     setIsSubmitting(true);
-    
-    // --- Replace with your actual API endpoint ---
-    console.log("Form data:", data);
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API delay
-    // const response = await fetch('/api/send-email', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data),
-    // });
-    // --- ------------------------------------ ---
-    
-    // Assuming the API call is successful
-    toast.success("Message sent! I'll get back to you soon.");
-    reset();
-    setIsSubmitting(false);
+
+    // --- STEP 2: Access your credentials from the .env file ---
+    // These variables are now securely loaded from your .env file.
+    const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    // The `data` object from react-hook-form maps directly to your template variables
+    const templateParams = {
+      name: data.name,
+      email: data.email,
+      message: data.message,
+    };
+
+    // --- STEP 3: Send the email using EmailJS ---
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        toast.success("Message sent! I'll get back to you soon.");
+        reset(); // Clear the form
+      })
+      .catch((err) => {
+        console.error('FAILED...', err);
+        toast.error('Failed to send message. Please try again.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -39,8 +50,8 @@ function ContactSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-white">Let's build something together.</h2>
           <p className="mt-4 text-white/80">
             Have a project in mind? Send me a message below or email me directly at{' '}
-            <a href="mailto:lraihan@hackermail.com" className="text-[#A367B1] hover:underline">
-              lraihan@hackermail.com
+            <a href="mailto:kamleshkhatod42@gmail.com" className="text-[#A367B1] hover:underline">
+              kamleshkhatod30@gmail.com
             </a>
           </p>
 
@@ -100,4 +111,5 @@ function ContactSection() {
     </section>
   );
 }
+
 export default ContactSection;

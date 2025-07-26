@@ -12,8 +12,8 @@ function TiltableImage({ src, alt, className }) {
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
 
-  const rotateX = useTransform(springY, [0, 1], ["6deg", "-6deg"]);
-  const rotateY = useTransform(springX, [0, 1], ["-6deg", "6deg"]);
+  const rotateX = useTransform(springY, [0, 1], ["16deg", "-16deg"]);
+  const rotateY = useTransform(springX, [0, 1], ["-16deg", "16deg"]);
 
   const handleMouseMove = (e) => {
     if (!ref.current) return;

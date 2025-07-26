@@ -6,7 +6,7 @@ function Project({ title, description, imagePaths, type }) {
   const isMobileProjectType = type === 'mobile';
 
   return (
-    <div className="w-full min-h-screen flex items-center py-16 px-4 md:px-8 bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/workBg.png')" }}>
+    <div className="w-full min-h-screen flex items-center py-16 px-4 md:px-8 bg-cover bg-center">
       <div className="container mx-auto">
         <div className={`flex flex-col ${isMobileProjectType ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}>
           <div className="md:w-1/3">

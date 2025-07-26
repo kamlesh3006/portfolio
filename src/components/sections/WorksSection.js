@@ -25,14 +25,14 @@ const projects = [
       type: 'desktop',
     },
     {
-      title: 'Panic Button (Sample)',
-      description: 'A simple yet essential SOS app built for Damkar Banten. Designed for quick, real-time emergency reporting and tracking, it helps firefighters receive, manage, and respond to incidents faster.',
+      title: 'MuseWords - Social Media Platform',
+      description: 'A social media platform for sharing quotes anonymously, providing a secure space for free expression. It features user authentication and robust admin/super-user roles for content moderation.',
       imagePaths: [
-        '/assets/works/project3-1.png',
-        '/assets/works/project3-2.png',
-        '/assets/works/project3-3.png',
+        '/assets/works/musewords-1.jpeg',
+        '/assets/works/musewords-2.png',
+        '/assets/works/musewords-3.png',
       ],
-      type: 'mobile',
+      type: 'desktop',
     },
 ];
 
@@ -57,7 +57,7 @@ function WorksSection({ scrollContainerRef }) {
   return (
     <section ref={targetRef} className="relative w-full">
       <motion.div
-        style={{ y: headerY, backgroundImage: "url('/assets/images/paper.png')" }}
+        style={{ y: headerY }}
         className="sticky top-0 h-auto py-16 md:py-32 bg-cover bg-center z-0"
       >
         <div className="relative overflow-hidden">

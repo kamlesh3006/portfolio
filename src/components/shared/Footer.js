@@ -2,6 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Instagram } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
+// --- STEP 1: VERIFY YOUR FILE LOCATION ---
+// 1. Make sure you have a folder named `assets` inside your `public` folder.
+// 2. Make sure your `logo.png` file is inside that `assets` folder.
+//
+// Your folder structure should look like this:
+// ├── public/
+// │   ├── assets/
+// │   │   └── logo.png  <-- YOUR LOGO MUST BE HERE
+// ├── src/
+// ...etc.
+
 const SocialIcon = ({ icon: Icon, url, tooltip }) => (
   <a
     href={url}
@@ -15,17 +26,17 @@ const SocialIcon = ({ icon: Icon, url, tooltip }) => (
 );
 
 function Footer() {
-  const [jakartaTime, setJakartaTime] = useState('');
+  const [localTime, setLocalTime] = useState('');
 
   useEffect(() => {
     const updateTime = () => {
-      const gmt7Time = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
-      const timeString = gmt7Time.toLocaleTimeString('en-US', {
+      const indianTime = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+      const timeString = indianTime.toLocaleTimeString('en-US', {
         hour: 'numeric',
         minute: 'numeric',
         hour12: true,
       });
-      setJakartaTime(timeString);
+      setLocalTime(timeString);
     };
 
     updateTime();
@@ -34,25 +45,31 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#1a1a1a] border-t border-white/10 py-8 px-4 md:px-8">
+    <footer className="bg-[#1a1a1a] border-t border-white/10 py-8 px-4 md:px-8 font-nunito text-xs">
       <div className="container mx-auto">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
-            <div className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Raihan.</div>
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-gray-400 text-sm">
-              <span>lraihan@hackermail.com</span>
-              <span>Jakarta, {jakartaTime}</span>
+            <div className="text-gray-400">&copy; {new Date().getFullYear()} Kamlesh.</div>
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-gray-400">
+              <span>kamleshkhatod30@gmail.com</span>
+              <span>Nashik, {localTime}</span>
             </div>
             <div className="flex items-center space-x-6">
-              <SocialIcon icon={Github} url="https://github.com/lraihan" tooltip="GitHub" />
-              <SocialIcon icon={Linkedin} url="https://www.linkedin.com/in/raihan-fadli-dev/" tooltip="LinkedIn" />
-              <SocialIcon icon={Instagram} url="https://www.instagram.com/locio_raihan/" tooltip="Instagram" />
+              <SocialIcon icon={Github} url="https://github.com/kamlesh3006" tooltip="GitHub" />
+              <SocialIcon icon={Linkedin} url="https://www.linkedin.com/in/kamlesh-khatod/" tooltip="LinkedIn" />
+              <SocialIcon icon={Instagram} url="https://www.instagram.com/_kamlesh_khatod_/" tooltip="Instagram" />
             </div>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={200}>
           <div className="mt-8 flex justify-center">
-            <img src="/assets/images/logo.png" alt="Logo" className="h-12" style={{ filter: 'brightness(0) invert(0.8)'}} />
+            {/* --- STEP 2: USE THE process.env.PUBLIC_URL VARIABLE --- */}
+            {/* This is the most reliable way to reference files in the public folder. */}
+            <img 
+              src={`${process.env.PUBLIC_URL}/assets/logo.png`} 
+              alt="Logo" 
+              className="h-24" 
+            />
           </div>
         </ScrollReveal>
       </div>

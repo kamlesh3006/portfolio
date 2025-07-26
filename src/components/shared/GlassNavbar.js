@@ -30,7 +30,7 @@ function GlassNavbar({ onNavigationTap }) {
         <nav className="fixed top-0 left-0 right-0 z-40 h-16 backdrop-blur-md bg-[#121212]/30 border-b border-white/10">
             <div className="w-full max-w-screen-2xl mx-auto h-full flex justify-between items-center px-8">
                 <button onClick={() => onNavigationTap?.(0)} className="cursor-pointer">
-                    <img src="/assets/images/logo.png" alt="Logo" className="h-7 text-white" style={{ filter: 'brightness(0) invert(1)' }} />
+                    <img src="/assets/logo.png" alt="Logo" className="h-20 text-white" style={{ filter: 'brightness(0) invert(1)' }} />
                 </button>
                 <div className="hidden md:flex items-center space-x-4">
                     {navItems.map((item) => (

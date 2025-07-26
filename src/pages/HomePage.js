@@ -11,16 +11,41 @@ import { Toaster } from 'react-hot-toast';
 
 const sections = ['Hero', 'About', 'Timeline', 'Works', 'Stand Out', 'Contact'];
 
+// Easing function for smooth acceleration/deceleration
+const easeInOutQuad = (t, b, c, d) => {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+};
+
+// Custom scroll animation function
+const customScrollTo = (target, container, duration) => {
+    const start = container.scrollTop;
+    const change = target.offsetTop - start;
+    let startTime = null;
+
+    const animateScroll = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        container.scrollTop = easeInOutQuad(elapsed, start, change, duration);
+        if (elapsed < duration) {
+            requestAnimationFrame(animateScroll);
+        }
+    };
+
+    requestAnimationFrame(animateScroll);
+};
+
+
 function HomePage() {
   const scrollContainerRef = useRef(null);
   const sectionRefs = useRef(sections.map(() => createRef()));
 
   const scrollToSection = (index) => {
-    if (sectionRefs.current[index] && sectionRefs.current[index].current) {
-      sectionRefs.current[index].current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    if (sectionRefs.current[index] && sectionRefs.current[index].current && scrollContainerRef.current) {
+      // Use the custom smooth scroll function
+      customScrollTo(sectionRefs.current[index].current, scrollContainerRef.current, 1500); // 1500ms duration
     }
   };
 
@@ -37,7 +62,6 @@ function HomePage() {
       />
       <GlassNavbar onNavigationTap={scrollToSection} />
       
-      {/* --- FIX: Removed `snap-y snap-mandatory` for smoother scrolling --- */}
       <main ref={scrollContainerRef} className="h-screen w-screen overflow-y-auto overflow-x-hidden">
         <div ref={sectionRefs.current[0]}>
           <CursorRevealHeroSection onExplorePressed={() => scrollToSection(3)} />
