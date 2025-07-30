@@ -34,7 +34,7 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
                 // Added a custom drop-shadow for the white glow effect.
                 className={`
                   rounded-lg shadow-lg 
-                  ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} w-full
+                  ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} w-3/4
                   transition-all duration-300 ease-in-out 
                   group-hover:scale-110 
                   group-hover:filter group-hover:drop-shadow-[0_5px_10px_rgba(255,255,255,0.3)]

@@ -63,7 +63,7 @@ function TimelineTile({ event, index, scrollContainerRef }) {
                         <h3 className="font-bold text-base md:text-lg text-white">{event.title}</h3>
                     </div>
                     <p className="text-xs text-white/70 mt-1">{event.company} - {event.location}</p>
-                    <p className="text-xs text-white/60 mt-3 font-nunito">{event.description}</p>
+                    <p className="text-xs text-white/60 mt-3 leading- font-nunito">{event.description}</p>
                 </motion.div>
             </motion.div>
             <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">

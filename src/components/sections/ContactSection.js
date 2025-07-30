@@ -45,9 +45,9 @@ function ContactSection() {
 
   return (
     <section className="w-full py-20 px-4 md:px-8 bg-[#1a1a1a]">
-      <div className="container mx-auto max-w-2xl">
+      <div className="container mx-auto max-w-2xl text-md font-nunito">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Let's build something together.</h2>
+          <h2 className="text-3xl md:text-4xl font-sans font-bold text-white">Let's build something together.</h2>
           <p className="mt-4 text-white/80">
             Have a project in mind? Send me a message below or email me directly at{' '}
             <a href="mailto:kamleshkhatod42@gmail.com" className="text-[#A367B1] hover:underline">
@@ -60,7 +60,7 @@ function ContactSection() {
               <input
                 {...register('name', { required: 'Name is required' })}
                 placeholder="Name"
-                className="w-full p-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A367B1] transition-all"
+                className="w-full p-3 bg-transparent border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A367B1] transition-all"
               />
               {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>}
             </div>
@@ -75,7 +75,7 @@ function ContactSection() {
                 })}
                 placeholder="Email"
                 type="email"
-                className="w-full p-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A367B1] transition-all"
+                className="w-full p-3 bg-transparent border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A367B1] transition-all"
               />
               {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>}
             </div>
@@ -83,8 +83,8 @@ function ContactSection() {
               <textarea
                 {...register('message', { required: 'Message is required' })}
                 placeholder="Message"
-                rows="4"
-                className="w-full p-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A367B1] transition-all"
+                rows="3"
+                className="w-full p-3 bg-transparent border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A367B1] transition-all"
               />
               {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>}
             </div>

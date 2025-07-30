@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import ScrollReveal from '../shared/ScrollReveal';
+import fgImg from '../../assets/final-fg.png';
+import bgImg from '../../assets/final-bg.png';
 
 function CursorRevealHeroSection({ onExplorePressed }) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -56,14 +58,14 @@ function CursorRevealHeroSection({ onExplorePressed }) {
             {/* Layer 1: Base Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/assets/final-fg.png')" }}
+                style={{ backgroundImage: `url(${fgImg})` }}
             />
             
             {/* Layer 2: Revealed Background Image (masked) */}
             <motion.div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                    backgroundImage: "url('/assets/final-bg.png')",
+                    backgroundImage: `url(${bgImg})`,
                     maskImage: `radial-gradient(circle var(--mask-size) at ${mousePosition.x}px ${mousePosition.y}px, black 100%, transparent 100%)`,
                     WebkitMaskImage: `radial-gradient(circle var(--mask-size) at ${mousePosition.x}px ${mousePosition.y}px, black 100%, transparent 100%)`,
                 }}

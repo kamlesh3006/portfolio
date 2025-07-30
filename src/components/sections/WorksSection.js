@@ -2,15 +2,24 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Project from '../works/Project';
 import ScrollReveal from '../shared/ScrollReveal';
+import anviksa1 from '../../assets/works/anviksa-1.png';
+import anviksa2 from '../../assets/works/anviksa-2.png';
+import anviksa3 from '../../assets/works/anviksa-3.png';
+import codearena1 from '../../assets/works/codearena-1.png';
+import codearena2 from '../../assets/works/codearena-2.png';
+import codearena3 from '../../assets/works/codearena-3.png';
+import musewords1 from '../../assets/works/musewords-1.jpeg';
+import musewords2 from '../../assets/works/musewords-2.png';
+import musewords3 from '../../assets/works/musewords-3.png';
 
 const projects = [
     {
       title: 'Anviksa: ML-Based CAPTCHA',
       description: 'A novel CAPTCHA system that passively detects bots by capturing and analyzing user behavior (mouse movements, keypresses) with machine learning models like Random Forest and XGBoost, eliminating traditional puzzles.',
       imagePaths: [
-        '/assets/works/anviksa-1.png', 
-        '/assets/works/anviksa-2.png',
-        '/assets/works/anviksa-3.png',
+        anviksa1, 
+        anviksa2,
+        anviksa3,
       ],
       type: 'desktop',
     },
@@ -18,9 +27,9 @@ const projects = [
       title: 'CodeArena - Coding Platform',
       description: 'A web app for users to practice coding skills in OOP, DSA, and SQL. Features a secure session timeout, a code editor, and a compiler that validates solutions against predefined test cases.',
       imagePaths: [
-        '/assets/works/codearena-1.png',
-        '/assets/works/codearena-2.png',
-        '/assets/works/codearena-3.png',
+        codearena1,
+        codearena2,
+        codearena3,
       ],
       type: 'desktop',
     },
@@ -28,9 +37,9 @@ const projects = [
       title: 'MuseWords - Social Media Platform',
       description: 'A social media platform for sharing quotes anonymously, providing a secure space for free expression. It features user authentication and robust admin/super-user roles for content moderation.',
       imagePaths: [
-        '/assets/works/musewords-1.jpeg',
-        '/assets/works/musewords-2.png',
-        '/assets/works/musewords-3.png',
+        musewords1,
+        musewords2,
+        musewords3,
       ],
       type: 'desktop',
     },
@@ -67,19 +76,18 @@ function WorksSection({ scrollContainerRef }) {
           >
             DESIGNED WITH LOGIC DESIGNED WITH LOGIC
           </motion.h2>
-        </div>
-        <div className="container mx-auto px-4 md:px-8 mt-8 md:mt-16">
+          </div>
+        </motion.div>
+        <div className="container mx-auto px-4 md:px-8 mt-8 md:-mt-36 z-40">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row justify-between items-center text-[#121212] font-bold">
-              <span className="text-lg">(Works.)</span>
-              <p className="text-center text-base md:text-lg my-4 md:my-0">This creation is a confession, written in dark and dart.</p>
+            <div className="flex flex-col md:flex-row justify-between items-center text-[#F5F5F5]  py-12 font-nunito font-sm">
+              <span className="font-thin">(Works.)</span>
               <span className="w-24"></span>
             </div>
           </ScrollReveal>
         </div>
-      </motion.div>
       
-      <div className="relative z-10 -mt-[35vh] md:-mt-[45vh]">
+      <div className="relative bg-[#1A1A1A] z-10 -mt-16 md:-mt-12">
         {projects.map((project, index) => (
           <Project key={index} {...project} />
         ))}

@@ -4,7 +4,7 @@ import ScrollReveal from '../shared/ScrollReveal';
 
 function TimelineSection({ scrollContainerRef }) {
   return (
-    <section className="w-full py-20 px-4 md:px-8 bg-[#121212]">
+    <section className="w-full pt-20 px-4 md:px-8 bg-[#121212]">
       <div className="container mx-auto text-center">
         <ScrollReveal>
           <h2 className="text-3xl md:text-4xl font-bold text-white">Career Timeline</h2>

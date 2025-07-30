@@ -19,7 +19,7 @@ function StandOutSection() {
           </h2>
         </ScrollReveal>
         <ScrollReveal offset={100} delay={0.4}>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl text-left text-white/90 tracking-[0.2em]">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl text-left text-white/90 tracking-[0.2em]">
             <AnimatedText text="comes alive in" />
           </h2>
         </ScrollReveal>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Instagram } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-
+import logo from '../../assets/logo.png';
 // --- STEP 1: VERIFY YOUR FILE LOCATION ---
 // 1. Make sure you have a folder named `assets` inside your `public` folder.
 // 2. Make sure your `logo.png` file is inside that `assets` folder.
@@ -45,12 +45,12 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#1a1a1a] border-t border-white/10 py-8 px-4 md:px-8 font-nunito text-xs">
+    <footer className="bg-[#1a1a1a] border-t border-white/10 py-8 px-4 md:px-8 font-nunito text-sm">
       <div className="container mx-auto">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
             <div className="text-gray-400">&copy; {new Date().getFullYear()} Kamlesh.</div>
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-gray-400">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-48 text-gray-400">
               <span>kamleshkhatod30@gmail.com</span>
               <span>Nashik, {localTime}</span>
             </div>
@@ -60,15 +60,11 @@ function Footer() {
               <SocialIcon icon={Instagram} url="https://www.instagram.com/_kamlesh_khatod_/" tooltip="Instagram" />
             </div>
           </div>
-        </ScrollReveal>
-        <ScrollReveal delay={200}>
           <div className="mt-8 flex justify-center">
-            {/* --- STEP 2: USE THE process.env.PUBLIC_URL VARIABLE --- */}
-            {/* This is the most reliable way to reference files in the public folder. */}
             <img 
-              src={`${process.env.PUBLIC_URL}/assets/logo.png`} 
+              src={logo} 
               alt="Logo" 
-              className="h-24" 
+              className="w-64" 
             />
           </div>
         </ScrollReveal>
