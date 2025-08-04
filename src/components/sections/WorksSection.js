@@ -53,7 +53,6 @@ function WorksSection() {
     return (
         <section ref={targetRef} className="relative w-full bg-[#121212]">
 
-            {/* Sticky Header with Background Text */}
             <motion.div
                 style={{ y: headerY }}
                 className="sticky top-0 h-[50vh] md:h-auto py-24 md:py-32 flex items-center bg-[#121212] z-0"
@@ -68,9 +67,7 @@ function WorksSection() {
                 </div>
             </motion.div>
 
-            {/* This container holds both the title and the project list, managing the overlap */}
             <div className="relative z-10 -mt-[40vh] md:-mt-64">
-                {/* "(Works.)" Title Overlay */}
                 <div className="container mx-auto px-4 md:px-8">
                     <ScrollReveal>
                         <div className="flex justify-between items-center text-[#F5F5F5] py-12 font-nunito text-sm">
@@ -80,13 +77,12 @@ function WorksSection() {
                     </ScrollReveal>
                 </div>
                 
-                {/* Container for the list of projects */}
                 <div className="relative bg-[#1A1A1A] z-10 -mt-24">
                 {projects.map((project, index) => (
                     <Project 
                     key={index} 
                     {...project} 
-                    githubUrl={project.githubUrl} // Add this line
+                    githubUrl={project.githubUrl}
                     />
                 ))}
                 </div>

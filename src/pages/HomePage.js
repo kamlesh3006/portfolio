@@ -11,7 +11,6 @@ import { Toaster } from 'react-hot-toast';
 
 const sections = ['Hero', 'About', 'Timeline', 'Works', 'Stand Out', 'Contact'];
 
-// Easing function for smooth acceleration/deceleration
 const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
     if (t < 1) return c / 2 * t * t + b;
@@ -19,7 +18,6 @@ const easeInOutQuad = (t, b, c, d) => {
     return -c / 2 * (t * (t - 2) - 1) + b;
 };
 
-// Custom scroll animation function
 const customScrollTo = (target, container, duration) => {
     const start = container.scrollTop;
     const change = target.offsetTop - start;
@@ -44,8 +42,7 @@ function HomePage() {
 
   const scrollToSection = (index) => {
     if (sectionRefs.current[index] && sectionRefs.current[index].current && scrollContainerRef.current) {
-      // Use the custom smooth scroll function
-      customScrollTo(sectionRefs.current[index].current, scrollContainerRef.current, 1500); // 1500ms duration
+      customScrollTo(sectionRefs.current[index].current, scrollContainerRef.current, 1500);
     }
   };
 

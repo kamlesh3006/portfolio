@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, useAnimation, animate } from 'framer-motion';
 import logo from '../../logo/logo.png';
 
-// This is the corrected, simplified version of the loader.
-// It no longer needs the onAnimationComplete prop.
 function ElegantLoader() {
   const [progress, setProgress] = useState(0);
   const [message, setMessage] = useState('Booting up visual core...');

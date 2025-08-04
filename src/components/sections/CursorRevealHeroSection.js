@@ -37,7 +37,6 @@ function CursorRevealHeroSection({ onExplorePressed }) {
     
     const maskSize = 150;
 
-    // A single component to render the headings, ensuring they are always identical.
     const Headings = ({ shadowStyle }) => (
         <div style={shadowStyle}>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-wider uppercase text-white">
@@ -55,17 +54,12 @@ function CursorRevealHeroSection({ onExplorePressed }) {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
         >
-            {/* Layer 1: Base Background Image */}
-            {/* Mobile-only black background */}
             <div className="absolute inset-0 bg-[#121212] md:hidden" />
-
-            {/* Desktop-only background image */}
             <div
                 className="hidden md:block absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${fgImg})` }}
             />
             
-            {/* Layer 2: Revealed Background Image (masked) */}
             <motion.div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
@@ -82,9 +76,7 @@ function CursorRevealHeroSection({ onExplorePressed }) {
                 }}
             />
             
-            {/* Layer 3: Main Content Container */}
             <div className="absolute inset-0 flex flex-col items-start justify-center text-left text-white p-4">
-                {/* Base text with WHITE shadow */}
                 <Headings shadowStyle={{ textShadow: '2px 2px 8px rgba(255,255,255,0.5)' }} />
 
                 <div className="absolute bottom-10 text-right right-4">
@@ -96,7 +88,6 @@ function CursorRevealHeroSection({ onExplorePressed }) {
                 </div>
             </div>
 
-            {/* Layer 4: Masked Text Overlay with BLACK shadow */}
             <motion.div
                 className="absolute inset-0 flex flex-col items-start justify-center text-left text-white p-4 pointer-events-none"
                 style={{
@@ -113,8 +104,7 @@ function CursorRevealHeroSection({ onExplorePressed }) {
             >
                 <Headings shadowStyle={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }} />
             </motion.div>
-            
-            {/* Custom Cursor */}
+
             <motion.div
                 className="absolute w-10 h-10 rounded-full border-2 border-[#A367B1] pointer-events-none"
                 style={{

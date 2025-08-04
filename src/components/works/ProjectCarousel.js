@@ -23,7 +23,6 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
       >
         {imagePaths.map((path, index) => (
           <SwiperSlide key={index}>
-            {/* --- FIX 1: Padding is now responsive --- */}
             <div className="p-4 sm:p-8 md:p-16 overflow-hidden flex justify-center items-center">
               <img 
                 src={path} 
@@ -45,7 +44,6 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
         ))}
       </Swiper>
       
-      {/* The CSS-in-JS for Swiper controls remains the same */}
       <style>{`
         .works-carousel .swiper-button-next,
         .works-carousel .swiper-button-prev {

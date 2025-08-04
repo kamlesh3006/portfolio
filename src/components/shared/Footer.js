@@ -2,16 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Instagram } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import logo from '../../assets/logo.png';
-// --- STEP 1: VERIFY YOUR FILE LOCATION ---
-// 1. Make sure you have a folder named `assets` inside your `public` folder.
-// 2. Make sure your `logo.png` file is inside that `assets` folder.
-//
-// Your folder structure should look like this:
-// ├── public/
-// │   ├── assets/
-// │   │   └── logo.png  <-- YOUR LOGO MUST BE HERE
-// ├── src/
-// ...etc.
 
 const SocialIcon = ({ icon: Icon, url, tooltip }) => (
   <a

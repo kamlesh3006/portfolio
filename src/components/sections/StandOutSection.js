@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollReveal from '../shared/ScrollReveal';
-import AnimatedText from '../shared/AnimatedText'; // Import the new component
+import AnimatedText from '../shared/AnimatedText';
 
 function StandOutSection() {
   return (

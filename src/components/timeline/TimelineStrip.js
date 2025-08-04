@@ -11,7 +11,6 @@ const events = [
 function TimelineStrip() {
   return (
     <div className="relative w-full max-w-4xl mx-auto px-4">
-      {/* The center line - hidden on mobile, visible on desktop */}
       <div className="hidden md:block absolute left-1/2 top-0 h-full w-px bg-white/20" />
       
       <div className="relative flex flex-col gap-y-12 md:gap-y-16">
@@ -20,7 +19,6 @@ function TimelineStrip() {
             key={index} 
             event={event} 
             index={index} 
-            // We add a delay for a nice staggered effect
             delay={0.2 * (index + 1)}
           />
         ))}

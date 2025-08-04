@@ -1,17 +1,14 @@
-/* App.css */
+
 html {
   scroll-behavior: smooth;
 }
 .App {
-  /* Use Flexbox to center children */
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center;     /* Vertically center */
+  justify-content: center; 
+  align-items: center;     
 
-  /* Make the container take up the full screen height */
   min-height: 100vh;
 
-  /* Optional: a background color for the page */
   background-color: #1b1b1b; 
 }
 .App-logo {
@@ -48,22 +45,20 @@ html {
     transform: rotate(360deg);
   }
 }
-/* --- Main Content Fade-in --- */
 .content-hidden {
   opacity: 0;
 }
 .content-fade-in {
   opacity: 1;
-  transition: opacity 1s ease-in 0.5s; /* Fade in after curtains open */
+  transition: opacity 1s ease-in 0.5s;
 }
 
-/* --- Curtain Styles --- */
 .curtain {
   position: fixed;
   top: 0;
-  width: 50vw; /* Each curtain covers half the screen */
+  width: 50vw;
   height: 100vh;
-  background-color: #121212; /* Match your page background */
+  background-color: #121212; 
   z-index: 100;
   animation: open-curtain 1.2s ease-in-out forwards;
 }
@@ -76,7 +71,6 @@ html {
   right: 0;
 }
 
-/* --- Curtain Animation --- */
 @keyframes open-curtain {
   0% {
     transform: scaleX(1);

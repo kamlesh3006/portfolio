@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import useScrambleText from '../../hooks/useScrambleText';
 import logo from '../../assets/logo.png';
-// (Code for GlassNavbar is unchanged and remains the same as previous versions)
 function NavItem({ text, index, onTap }) {
     const [isHovering, setIsHovering] = useState(false);
     const { scrambledText } = useScrambleText({ originalText: text, isHovering });
@@ -39,7 +38,6 @@ function GlassNavbar({ onNavigationTap }) {
                     ))}
                 </div>
                 <div className="md:hidden">
-                    {/* Mobile menu could be implemented here */}
                 </div>
             </div>
         </nav>

@@ -9,11 +9,9 @@ function TimelineTile({ event, index, delay }) {
     const illuminatedColor = '#A367B1';
 
     return (
-      // The entire component is now wrapped in ScrollReveal
       <ScrollReveal delay={delay}>
         <div className="md:relative w-full flex justify-center md:justify-start">
             
-            {/* Main content tile */}
             <div
                 className={`w-full max-w-sm p-6 rounded-lg bg-[#1c1c1c]/50 backdrop-blur-sm 
                             border-t-4 md:border-t-0 md:w-[calc(50%-2.5rem)]
@@ -34,8 +32,6 @@ function TimelineTile({ event, index, delay }) {
                     <p className="text-sm text-white/60 mt-3 leading-snug font-nunito">{event.description}</p>
                 </div>
             </div>
-
-            {/* Desktop-only timeline icon */}
             <div 
               className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 items-center justify-center
                           w-12 h-12 rounded-full border-2 bg-[#121212] z-10"

@@ -22,7 +22,6 @@ function AboutSection() {
   return (
     <section className="min-h-screen w-full flex flex-col justify-center py-20 px-4 md:px-8 bg-[#1a1a1a]">
       
-      {/* Container for the main content (no changes here) */}
       <div className="container mx-auto flex flex-col flex-grow justify-center">
         <div className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-48">
           <ScrollReveal>
@@ -36,28 +35,23 @@ function AboutSection() {
         </div>
       </div>
       
-      {/* Stats container at the bottom */}
       <div className="container mx-auto pt-10 mt-10 border-t border-white/10">
 
-        {/* --- MOBILE LAYOUT (visible on screens smaller than 'md') --- */}
         <div className="md:hidden">
-          {/* Top row with 3 items */}
           <div className="grid grid-cols-3 gap-x-4">
             {stats.slice(0, 3).map(stat => (
               <StatItem key={stat.label} {...stat} />
             ))}
           </div>
-          {/* Bottom row with 2 items, centered using flexbox */}
           <div className="mt-8 flex justify-center gap-x-4">
             {stats.slice(3, 5).map(stat => (
-              <div key={stat.label} className="w-1/3"> {/* Each item takes up 1/3 of the width to help with spacing */}
+              <div key={stat.label} className="w-1/3">
                 <StatItem {...stat} />
               </div>
             ))}
           </div>
         </div>
 
-        {/* --- DESKTOP LAYOUT (visible on 'md' screens and up) --- */}
         <div className="hidden md:grid md:grid-cols-5 md:gap-4">
           {stats.map(stat => (
             <StatItem key={stat.label} {...stat} />

@@ -9,7 +9,6 @@ export default function App() {
 
   useEffect(() => {
     const handleLoad = () => {
-      // Wait for everything to load, then start animations
       setLoading(false);
       setTimeout(() => setShowContent(true), 100); 
     };
@@ -24,18 +23,13 @@ export default function App() {
 
   return (
     <>
-      {/* The preloader remains the same */}
       {loading && <ElegantLoader />}
-
-      {/* Curtain Overlays */}
       {!loading && (
         <>
           <div className="curtain left"></div>
           <div className="curtain right"></div>
         </>
       )}
-
-      {/* Your main content with its fade-in effect */}
       <div className={showContent ? 'content-fade-in' : 'content-hidden'}>
         <HomePage />
       </div>

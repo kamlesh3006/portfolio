@@ -19,29 +19,25 @@ body {
 .content-fade-in {
   opacity: 1;
   visibility: visible;
-  transition: opacity 1.5s ease-in-out; /* You can adjust the duration (1.5s) */
+  transition: opacity 1.5s ease-in-out;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
-  width: 8px; /* Makes the scrollbar thinner */
+  width: 8px; 
 }
 
-/* This is the "track" or the background of the scrollbar */
 ::-webkit-scrollbar-track {
-  background: transparent; /* Removes the white background */
+  background: transparent; 
 }
 
-/* This is the draggable scrolling handle */
 ::-webkit-scrollbar-thumb {
-  background: #555; /* A dark grey color for the handle */
-  border-radius: 10px; /* Rounds the corners of the handle */
+  background: #555; 
+  border-radius: 10px; 
 }
 
-/* Change the handle's color on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #777;
 }

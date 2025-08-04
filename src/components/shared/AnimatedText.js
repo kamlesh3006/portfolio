@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Parent container variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: (i = 1) => ({
@@ -10,7 +9,6 @@ const containerVariants = {
   }),
 };
 
-// Child (word) variants
 const childVariants = {
   visible: {
     opacity: 1,
@@ -37,7 +35,6 @@ function AnimatedText({ text, className }) {
 
   return (
     <motion.div
-      // --- FIX: Use 'inline-flex' to respect parent's text-align property ---
       style={{ overflow: 'hidden', display: 'inline-flex', flexWrap: 'wrap' }}
       variants={containerVariants}
       initial="hidden"
@@ -47,7 +44,7 @@ function AnimatedText({ text, className }) {
       {words.map((word, index) => (
         <motion.span
           variants={childVariants}
-          style={{ marginRight: "0.25em" }} // space between words
+          style={{ marginRight: "0.25em" }}
           key={index}
         >
           {word}
