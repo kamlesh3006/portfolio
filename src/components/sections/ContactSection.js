@@ -3,8 +3,6 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Send, Loader } from 'lucide-react';
 import ScrollReveal from '../shared/ScrollReveal';
-
-// --- STEP 1: Import the EmailJS library ---
 import emailjs from '@emailjs/browser';
 
 function ContactSection() {
@@ -14,25 +12,21 @@ function ContactSection() {
   const onSubmit = (data) => {
     setIsSubmitting(true);
 
-    // --- STEP 2: Access your credentials from the .env file ---
-    // These variables are now securely loaded from your .env file.
     const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
     const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-    // The `data` object from react-hook-form maps directly to your template variables
     const templateParams = {
       name: data.name,
       email: data.email,
       message: data.message,
     };
 
-    // --- STEP 3: Send the email using EmailJS ---
     emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
         toast.success("Message sent! I'll get back to you soon.");
-        reset(); // Clear the form
+        reset();
       })
       .catch((err) => {
         console.error('FAILED...', err);
@@ -44,13 +38,13 @@ function ContactSection() {
   };
 
   return (
-    <section className="w-full py-20 px-4 md:px-8 bg-[#1a1a1a]">
+    <section className="w-full flex items-center justify-center py-20 px-6 md:px-8 bg-[#1a1a1a]">
       <div className="container mx-auto max-w-2xl text-md font-nunito">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-sans font-bold text-white">Let's build something together.</h2>
-          <p className="mt-4 text-white/80">
+          <h2 className="text-3xl md:text-4xl font-sans font-bold text-white text-center">Let's build something together.</h2>
+          <p className="mt-4 text-white/80 text-center">
             Have a project in mind? Send me a message below or email me directly at{' '}
-            <a href="mailto:kamleshkhatod42@gmail.com" className="text-[#A367B1] hover:underline">
+            <a href="mailto:kamleshkhatod30@gmail.com" className="text-[#A367B1] hover:underline">
               kamleshkhatod30@gmail.com
             </a>
           </p>

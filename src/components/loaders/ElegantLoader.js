@@ -54,7 +54,7 @@ function ElegantLoader() {
             <img 
               src={logo} 
               alt="Logo" 
-              className="w-1/3 object-contain"
+              className="w-1/4 object-contain"
             />
           </div>
         </motion.div>

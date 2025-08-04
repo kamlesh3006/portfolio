@@ -56,8 +56,12 @@ function CursorRevealHeroSection({ onExplorePressed }) {
             onMouseLeave={() => setIsHovering(false)}
         >
             {/* Layer 1: Base Background Image */}
+            {/* Mobile-only black background */}
+            <div className="absolute inset-0 bg-[#121212] md:hidden" />
+
+            {/* Desktop-only background image */}
             <div
-                className="absolute inset-0 bg-cover bg-center"
+                className="hidden md:block absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${fgImg})` }}
             />
             

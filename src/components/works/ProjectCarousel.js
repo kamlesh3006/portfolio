@@ -11,8 +11,6 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
   }
 
   return (
-    // --- CHANGE: Added the `group` class to this container ---
-    // This allows child elements to react to the hover state of this parent div.
     <div className={`relative group ${isMobileProjectType ? 'max-w-sm mx-auto' : ''}`}>
       <Swiper
         modules={[Navigation, Pagination]}
@@ -25,16 +23,18 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
       >
         {imagePaths.map((path, index) => (
           <SwiperSlide key={index}>
-            <div className="p-16 overflow-hidden flex justify-center items-center">
+            {/* --- FIX 1: Padding is now responsive --- */}
+            <div className="p-4 sm:p-8 md:p-16 overflow-hidden flex justify-center items-center">
               <img 
                 src={path} 
                 alt={`Project screenshot ${index + 1}`} 
-                // --- CHANGE: Replaced `hover:` with `group-hover:` ---
-                // Now, hovering anywhere on the parent `group` will trigger these effects.
-                // Added a custom drop-shadow for the white glow effect.
                 className={`
                   rounded-lg shadow-lg 
-                  ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} w-3/4
+                  ${isMobileProjectType ? 'aspect-[9/19]' : 'aspect-video'} 
+                  
+                  /* --- FIX 2: Width is now responsive --- */
+                  w-full md:w-3/4
+
                   transition-all duration-300 ease-in-out 
                   group-hover:scale-110 
                   group-hover:filter group-hover:drop-shadow-[0_5px_10px_rgba(255,255,255,0.3)]
@@ -45,15 +45,24 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
         ))}
       </Swiper>
       
+      {/* The CSS-in-JS for Swiper controls remains the same */}
       <style>{`
         .works-carousel .swiper-button-next,
         .works-carousel .swiper-button-prev {
-          color: #121212;
-          background-color: rgba(255, 255, 255, 0.5);
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          transition: background-color 0.3s;
+          /* Hiding buttons on small screens for a cleaner look */
+          display: none;
+        }
+        @media (min-width: 768px) {
+          .works-carousel .swiper-button-next,
+          .works-carousel .swiper-button-prev {
+            display: flex; /* Show buttons on larger screens */
+            color: #121212;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            transition: background-color 0.3s;
+          }
         }
         .works-carousel .swiper-button-next:hover,
         .works-carousel .swiper-button-prev:hover {
@@ -65,11 +74,10 @@ function ProjectCarousel({ imagePaths, isMobileProjectType }) {
           font-weight: bold;
         }
         .works-carousel .swiper-pagination-bullet {
-          background: #121212;
-          opacity: 0.6;
+          background: #A367B1; /* Changed to accent color for better visibility */
+          opacity: 0.5;
         }
         .works-carousel .swiper-pagination-bullet-active {
-          background: #A367B1;
           opacity: 1;
         }
       `}</style>

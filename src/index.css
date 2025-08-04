@@ -11,7 +11,16 @@ body {
   @apply bg-[#121212] tracking-widest;
 
 }
+.content-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
+.content-fade-in {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1.5s ease-in-out; /* You can adjust the duration (1.5s) */
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

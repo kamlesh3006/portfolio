@@ -48,3 +48,40 @@ html {
     transform: rotate(360deg);
   }
 }
+/* --- Main Content Fade-in --- */
+.content-hidden {
+  opacity: 0;
+}
+.content-fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in 0.5s; /* Fade in after curtains open */
+}
+
+/* --- Curtain Styles --- */
+.curtain {
+  position: fixed;
+  top: 0;
+  width: 50vw; /* Each curtain covers half the screen */
+  height: 100vh;
+  background-color: #121212; /* Match your page background */
+  z-index: 100;
+  animation: open-curtain 1.2s ease-in-out forwards;
+}
+
+.curtain.left {
+  left: 0;
+}
+
+.curtain.right {
+  right: 0;
+}
+
+/* --- Curtain Animation --- */
+@keyframes open-curtain {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
