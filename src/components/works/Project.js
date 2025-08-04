@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectCarousel from './ProjectCarousel';
 import ScrollReveal from '../shared/ScrollReveal';
 
-function Project({ title, description, imagePaths, type }) {
+function Project({ title, description, imagePaths, type , githubUrl }) {
   const isMobileProjectType = type === 'mobile';
 
   return (
@@ -24,10 +24,11 @@ function Project({ title, description, imagePaths, type }) {
 
           {/* Image Carousel Column */}
           <div className="w-full md:w-2/3">
-            <ScrollReveal delay={0.2}>
-              {/* The responsiveness of the carousel itself depends on the ProjectCarousel.js file */}
-              <ProjectCarousel imagePaths={imagePaths} isMobileProjectType={isMobileProjectType} />
-            </ScrollReveal>
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+              <ScrollReveal delay={0.2}>
+                <ProjectCarousel imagePaths={imagePaths} isMobileProjectType={isMobileProjectType} />
+              </ScrollReveal>
+            </a>
           </div>
           
         </div>

@@ -18,18 +18,21 @@ const projects = [
       description: 'A novel CAPTCHA system that passively detects bots by capturing and analyzing user behavior (mouse movements, keypresses) with machine learning models like Random Forest and XGBoost, eliminating traditional puzzles.',
       imagePaths: [anviksa1, anviksa2, anviksa3],
       type: 'desktop',
+      githubUrl: 'https://github.com/kshitijm310/Anviksa',
     },
     {
       title: 'CodeArena - Coding Platform',
       description: 'A web app for users to practice coding skills in OOP, DSA, and SQL. Features a secure session timeout, a code editor, and a compiler that validates solutions against predefined test cases.',
       imagePaths: [codearena1, codearena2, codearena3],
       type: 'desktop',
+      githubUrl: 'https://github.com/kamlesh3006/CodeArena',
     },
     {
       title: 'MuseWords - Social Media Platform',
       description: 'A social media platform for sharing quotes anonymously, providing a secure space for free expression. It features user authentication and robust admin/super-user roles for content moderation.',
       imagePaths: [musewords1, musewords2, musewords3],
       type: 'desktop',
+      githubUrl: 'https://github.com/kamlesh3006/social',
     },
 ];
 
@@ -78,10 +81,14 @@ function WorksSection() {
                 </div>
                 
                 {/* Container for the list of projects */}
-                <div className="bg-[#1A1A1A]">
-                    {projects.map((project, index) => (
-                        <Project key={index} {...project} />
-                    ))}
+                <div className="relative bg-[#1A1A1A] z-10 -mt-24">
+                {projects.map((project, index) => (
+                    <Project 
+                    key={index} 
+                    {...project} 
+                    githubUrl={project.githubUrl} // Add this line
+                    />
+                ))}
                 </div>
             </div>
         </section>
