@@ -26,7 +26,7 @@ function TimelineTile({ event, index, delay }) {
                 }}
             >
                 <div className={`text-center md:text-inherit`}>
-                    <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-x-3 gap-y-1 ${isLeft ? 'md:flex-row-reverse' : ''}">
+                    <div className={`flex flex-col md:flex-row items-center justify-center md:justify-start gap-x-3 gap-y-1 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
                         <h3 className="font-bold text-lg text-white">{event.title}</h3>
                         <p className="text-sm font-semibold text-[#A367B1]">({event.year})</p>
                     </div>
